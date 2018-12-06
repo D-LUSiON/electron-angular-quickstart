@@ -1,16 +1,17 @@
-import { Component, OnInit, EventEmitter, Output, NgZone } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, NgZone, ContentChild, TemplateRef, Input } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
 
 @Component({
     selector: 'app-titlebar',
     templateUrl: './titlebar.component.html',
-    styleUrls: ['./titlebar.component.scss']
+    styleUrls: ['./titlebar.component.scss'],
 })
 export class TitlebarComponent {
 
-    @Output() goBack: EventEmitter<any> = new EventEmitter();
+    @ContentChild('titlebar_buttons') titlebar_buttons: TemplateRef<any>;
+    @ContentChild('titlebar_title') titlebar_title: TemplateRef<any>;
 
-    app_window;
+    private _app_window;
 
     maximizable = true;
     minimizable = true;
@@ -23,20 +24,20 @@ export class TitlebarComponent {
         private ngZone: NgZone
     ) {
         if (this.electron.isElectronApp) {
-            this.app_window = this.electron.remote.getCurrentWindow();
+            this._app_window = this.electron.remote.getCurrentWindow();
 
-            this.maximizable = !(!this.app_window.isMaximizable() || !this.app_window.isResizable());
+            this.maximizable = !(!this._app_window.isMaximizable() || !this._app_window.isResizable());
 
-            this.minimizable = this.app_window.isMinimizable();
+            this.minimizable = this._app_window.isMinimizable();
 
-            this.maximized = this.app_window.isMaximized();
+            this.maximized = this._app_window.isMaximized();
 
-            this.app_window.on('maximize', () => {
+            this._app_window.on('maximize', () => {
                 this.ngZone.run(() => {
                     this.maximized = true;
                 });
             });
-            this.app_window.on('unmaximize', () => {
+            this._app_window.on('unmaximize', () => {
                 this.ngZone.run(() => {
                     this.maximized = false;
                 });
@@ -45,16 +46,12 @@ export class TitlebarComponent {
 
     }
 
-    onGoBack() {
-        this.goBack.emit();
-    }
-
     onMinimizeApp() {
         if (!this.electron.isElectronApp) {
             alert('You\'re not running Angular inside Electron!');
             return false;
         }
-        this.app_window.minimize();
+        this._app_window.minimize();
     }
 
     onMaximizeApp() {
@@ -63,10 +60,10 @@ export class TitlebarComponent {
             return false;
         }
         if (this.maximized) {
-            this.app_window.unmaximize();
+            this._app_window.unmaximize();
             this.maximized = false;
         } else {
-            this.app_window.maximize();
+            this._app_window.maximize();
             this.maximized = true;
         }
     }
@@ -76,7 +73,7 @@ export class TitlebarComponent {
             alert('You\'re not running Angular inside Electron!');
             return false;
         }
-        this.app_window.close();
+        this._app_window.close();
     }
 
 }

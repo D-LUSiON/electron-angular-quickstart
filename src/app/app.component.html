@@ -1,4 +1,11 @@
-<app-titlebar (goBack)="onGoBack()"></app-titlebar>
+<app-titlebar>
+    <ng-template #titlebar_buttons>
+        <div class="button go_back" (click)="onGoBack()">
+            <img src="assets/arrow-go-back.svg" alt="">
+        </div>
+    </ng-template>
+    <ng-template #titlebar_title>Titlebar title that you can change</ng-template>
+</app-titlebar>
 <div style="margin-top: 50px;">
     <h1>
         {{title}}

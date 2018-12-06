@@ -5,7 +5,7 @@
     "main": "electron/main.js",
     "scripts": {
         "ng": "ng",
-        "prestart": "ng build --configuration=dev",
+        "prestart": "ng build --configuration=dev --delete-output-path=true",
         "start": "gulp copy_dev_environment && concurrently \"npm run watch\" \"electron .\"",
         "watch": "ng build --watch --configuration=dev",
         "build": "gulp copy_prod_environment && electron-packager-interactive && gulp copy_dev_environment",
