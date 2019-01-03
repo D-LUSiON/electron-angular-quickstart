@@ -21,7 +21,6 @@
                             "src/favicon.ico"
                         ],
                         "styles": [
-                            "./node_modules/font-awesome/scss/font-awesome.scss",
                             "src/styles.scss"
                         ],
                         "scripts": []
@@ -47,7 +46,7 @@
                         },
                         "production": {
                             "baseHref": "",
-                            "outputPath": "./html_prod",
+                            "outputPath": "./prebuild",
                             "deleteOutputPath": true,
                             "optimization": true,
                             "outputHashing": "all",
