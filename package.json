@@ -6,7 +6,7 @@
     "scripts": {
         "ng": "ng",
         "prestart": "ng build --configuration=dev --delete-output-path=true",
-        "start": "gulp copy_dev_environment && concurrently \"npm run watch\" \"./node_modules/electron/dist/electron .\\electron\"",
+        "start": "gulp copy_dev_environment && concurrently \"npm run watch\" \"electron .\\electron\"",
         "watch": "ng build --watch --configuration=dev",
         "prebuild": "ng build --configuration=production",
         "build:full": "npm run build && npm run installer:win",
