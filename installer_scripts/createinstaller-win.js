@@ -5,7 +5,6 @@ const package = require('../package.json');
 
 const util = require('util');
 const inquirer = require('inquirer');
-inquirer.registerPrompt('selectLine', require('inquirer-select-line'));
 
 getInstallerConfig()
     .then(createWindowsInstaller)
