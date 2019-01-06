@@ -11,6 +11,15 @@ The main application window is set to frameless and there is a "titlebar" compon
 
 Run `npm start` for a dev server. The Electron window will hot reload on any change.
 
+## Requirements
+
+The only requirement is that you must have installed [Angular CLI](https://github.com/angular/angular-cli) globally.
+
+`
+    npm install -g @angular/cli@latest
+
+`
+
 ## Build
 
 Run `npm build` for interactive building. The project uses the [Interactive implementation of electron-packager](https://www.npmjs.com/package/electron-packager-interactive) and

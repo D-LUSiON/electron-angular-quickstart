@@ -3,6 +3,7 @@
     "version": "1.1.0",
     "license": "MIT",
     "main": "electron/main.js",
+    "author": "D-LUSiON",
     "scripts": {
         "ng": "ng",
         "prestart": "ng build --configuration=dev --delete-output-path=true",
@@ -50,6 +51,8 @@
         "gulp": "3.9.1",
         "gulp-rename": "1.2.2",
         "gulp-run-command": "0.0.9",
+        "inquirer": "^6.2.1",
+        "inquirer-select-line": "^1.1.1",
         "jasmine-core": "~2.6.2",
         "jasmine-spec-reporter": "~4.1.0",
         "karma": "~1.7.0",
