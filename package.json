@@ -1,9 +1,18 @@
 {
     "name": "electron-angular-quickstart",
+    "productName": "Electron-Angular Quickstart",
+    "description": "Quickstart project for creating Electron application with Angular front-end",
+    "author": "D-LUSiON",
     "version": "1.1.0",
     "license": "MIT",
+    "keywords": [
+        "Electron",
+        "Angular",
+        "Quickstart",
+        "application",
+        "blueprint"
+    ],
     "main": "electron/main.js",
-    "author": "D-LUSiON",
     "scripts": {
         "ng": "ng",
         "prestart": "ng build --configuration=dev --delete-output-path=true",
